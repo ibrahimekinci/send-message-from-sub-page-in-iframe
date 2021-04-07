@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Whatsapp müşteri oluşturma</title>
+	<script type="text/javascript">
+		function pageload() {
+		
+			var response = {
+				event: "whatsapp_customer_created",
+				value: {
+					IsSuccess : true,
+					Message : 'Başarılı',
+					CustomerCode: 'C2838409',
+					CustomerId : 2838409,
+					Name : 'sdfsdf',
+					Surname : 'wdwed1',
+					Phone : '21321321',
+				}
+			};
+			
+			console.log('response', response);
+			parent.postMessage(response, "*");
+		};
+	</script>
+</head>
+
+<body onload="pageload();">
+<h2>child page</h2>
+<p>The message sended to index.html(parent) from child.html(child)</p>
+</body>
+
+</html>

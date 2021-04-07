@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Index</title>
+</head>
+
+<body>
+<h1>Parent page</h1>
+	<iframe src="child.html" width="500" height="100"></iframe>
+
+	<script type="text/javascript">
+		var eventMethod = window.addEventListener ?
+			"addEventListener" :
+			"attachEvent";
+		var eventer = window[eventMethod];
+		var messageEvent = eventMethod === "attachEvent" ?
+			"onmessage" :
+			"message";
+
+		eventer(messageEvent, function (e) {
+			console.log('messageEvent -> e', e);
+			console.log('messageEvent -> e.data.event', e.data.event);
+				console.log('messageEvent -> e.data.value', e.data.value);
+
+			if (e.data && e.data.event === "whatsapp_customer_created" && e.data.value)
+				alert('Message from iframe just came! CustomerCode : ' + e.data.value.CustomerCode);
+		});
+	</script>
+</body>
+
+</html>
